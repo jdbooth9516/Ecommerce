@@ -23,10 +23,6 @@ namespace eCommerceStarterCode.Data
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
 
-           // modelBuilder.Entity<Product>()
-           //     .HasData(
-           //         new Product { ProductId = 1, Name = "Playstation 5", Discription = "Advanced Gaming console", CategoryId = 1, }
-           //     );
         }
 
     }
