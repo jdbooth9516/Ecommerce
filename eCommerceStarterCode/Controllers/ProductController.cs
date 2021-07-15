@@ -31,12 +31,18 @@ namespace eCommerceStarterCode.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAllProducts()
         {
             var products = _context.Products;
             return Ok(products);
         }
 
-
+        //[HttpGet("category")]
+        //public IActionResult GetProductsByCategory([FromBody]int categoryId)
+        //{
+        //    var products = _context.Products;
+        //    var filteredProducts = products.Where(p => p.CategoryId == categoryId);
+        //    return Ok(filteredProducts);
+        //}
     }
 }
