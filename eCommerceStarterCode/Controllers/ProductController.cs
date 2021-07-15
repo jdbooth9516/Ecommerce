@@ -10,7 +10,7 @@ using eCommerceStarterCode.Models;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -30,6 +30,12 @@ namespace eCommerceStarterCode.Controllers
             return StatusCode(201, value);
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var products = _context.Products;
+            return Ok(products);
+        }
 
 
     }
