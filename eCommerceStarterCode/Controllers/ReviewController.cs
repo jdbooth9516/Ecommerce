@@ -15,7 +15,7 @@ namespace eCommerceStarterCode.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
-        private  readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public ReviewController(ApplicationDbContext context)
         {
@@ -33,7 +33,7 @@ namespace eCommerceStarterCode.Controllers
 
         [HttpPost]
 
-        public IActionResult Post([FromBody]Review value)
+        public IActionResult Post([FromBody] Review value)
         {
             _context.Reviews.Add(value);
             _context.SaveChanges();
