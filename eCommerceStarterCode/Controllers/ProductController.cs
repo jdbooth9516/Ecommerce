@@ -22,9 +22,15 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //<baseurl>/api/products
-        
+        [HttpPost]
+        public IActionResult PostProduct([FromBody]Product value)
+        {
+            _context.Products.Add(value);
+            _context.SaveChanges();
+            return StatusCode(201, value);
+        }
 
-        
+
 
     }
 }
