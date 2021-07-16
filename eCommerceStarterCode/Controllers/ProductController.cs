@@ -37,7 +37,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(products);
         }
 
-        [HttpGet("category")]
+        [HttpPost("category")]
         public IActionResult GetProductsByCategory([FromBody]int categoryId)
         {
             var products = _context.Products;
@@ -45,7 +45,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(filteredProducts);
         }
 
-        [HttpGet("name")]
+        [HttpPost("name")]
         public IActionResult GetProductsByName([FromBody]string name)
         {
             var products = _context.Products;
