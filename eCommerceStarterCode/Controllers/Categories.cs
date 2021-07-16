@@ -20,7 +20,7 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        //<baseurl>/api/examples/user
+        //<baseurl>/api/categories
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,6 +34,16 @@ namespace eCommerceStarterCode.Controllers
             _context.Categories.Add(value);
             _context.SaveChanges();
             return StatusCode(201, value);
+    
+        }
+        //<baseurl>/api/categories/category?id=1
+        [HttpGet("category")]
+        public IActionResult GetProductsByCategory(int id)
+        {
+            var category = _context.Categories;
+            var filteredProducts = category.Where(p => p.CategoryId == id);
+            return Ok(filteredProducts);
         }
     }
+
 }
