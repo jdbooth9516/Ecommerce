@@ -37,12 +37,20 @@ namespace eCommerceStarterCode.Controllers
             return Ok(products);
         }
 
-        //[HttpGet("category")]
-        //public IActionResult GetProductsByCategory([FromBody]int categoryId)
-        //{
-        //    var products = _context.Products;
-        //    var filteredProducts = products.Where(p => p.CategoryId == categoryId);
-        //    return Ok(filteredProducts);
-        //}
+        [HttpGet("category")]
+        public IActionResult GetProductsByCategory([FromBody]int categoryId)
+        {
+            var products = _context.Products;
+            var filteredProducts = products.Where(p => p.CategoryId == categoryId);
+            return Ok(filteredProducts);
+        }
+
+        [HttpGet("name")]
+        public IActionResult GetProductsByName([FromBody]string name)
+        {
+            var products = _context.Products;
+            var filteredProducts = products.Where(p => p.Name.Contains(name));
+            return Ok(filteredProducts);
+        }
     }
 }
