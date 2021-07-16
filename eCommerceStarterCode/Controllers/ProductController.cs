@@ -10,7 +10,7 @@ using eCommerceStarterCode.Models;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -22,9 +22,35 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //<baseurl>/api/products
-        
+        [HttpPost]
+        public IActionResult PostProduct([FromBody]Product value)
+        {
+            _context.Products.Add(value);
+            _context.SaveChanges();
+            return StatusCode(201, value);
+        }
 
-        
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            var products = _context.Products;
+            return Ok(products);
+        }
 
+        [HttpGet("category")]
+        public IActionResult GetProductsByCategory([FromBody]int categoryId)
+        {
+            var products = _context.Products;
+            var filteredProducts = products.Where(p => p.CategoryId == categoryId);
+            return Ok(filteredProducts);
+        }
+
+        [HttpGet("name")]
+        public IActionResult GetProductsByName([FromBody]string name)
+        {
+            var products = _context.Products;
+            var filteredProducts = products.Where(p => p.Name.Contains(name));
+            return Ok(filteredProducts);
+        }
     }
 }
