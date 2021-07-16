@@ -37,5 +37,13 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return StatusCode(201, value);
         }
+
+        [HttpPost("user")]
+        public IActionResult GetShoppingCartByUser([FromBody] string userId)
+        {
+            var shoppingCarts = _context.ShoppingCarts;
+            var userShoppingCart = shoppingCarts.Where(s => s.UserId == userId);
+            return Ok(userShoppingCart);
+        }
     }
 }
