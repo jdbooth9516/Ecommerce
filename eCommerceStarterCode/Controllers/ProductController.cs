@@ -45,11 +45,11 @@ namespace eCommerceStarterCode.Controllers
             return Ok(filteredProducts);
         }
 
-        [HttpPost("name")]
-        public IActionResult GetProductsByName([FromBody]string name)
+        [HttpGet("search/{searchText}")]
+        public IActionResult GetProductsByName(string searchText)
         {
             var products = _context.Products;
-            var filteredProducts = products.Where(p => p.Name.Contains(name));
+            var filteredProducts = products.Where(p => p.Name.Contains(searchText));
             return Ok(filteredProducts);
         }
     }
