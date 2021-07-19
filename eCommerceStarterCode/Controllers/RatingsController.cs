@@ -16,7 +16,7 @@ namespace eCommerceStarterCode.Controllers
     public class RatingsController : ControllerBase
     {
         private ApplicationDbContext _context;
-       
+
         public RatingsController(ApplicationDbContext context)
         {
             _context = context;
@@ -36,6 +36,13 @@ namespace eCommerceStarterCode.Controllers
             _context.Ratings.Add(value);
             _context.SaveChanges();
             return StatusCode(201, value);
+        }
+
+        [HttpGet("{productId:int}")]
+        public IActionResult GetProductRatings(int productId)
+        {
+            var productRatings = _context.Ratings.Where(r => r.ProductId == productId);
+            return Ok(productRatings);
         }
     }
 }
