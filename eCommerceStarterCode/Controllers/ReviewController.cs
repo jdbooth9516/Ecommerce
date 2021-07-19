@@ -39,5 +39,13 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return StatusCode(201, value);
         }
+
+        [HttpGet("product/{productId}")]
+        public IActionResult GetShoppingCartByUser(int productId)
+        {
+            var reviews = _context.Reviews;
+            var productReviews = reviews.Where(r => r.ProductId == productId);
+            return Ok(productReviews);
+        }
     }
 }

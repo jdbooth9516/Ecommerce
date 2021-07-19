@@ -38,8 +38,8 @@ namespace eCommerceStarterCode.Controllers
             return StatusCode(201, value);
         }
 
-        [HttpPost("user")]
-        public IActionResult GetShoppingCartByUser([FromBody] string userId)
+        [HttpGet("user/{userId}")]
+        public IActionResult GetShoppingCartByUser(string userId)
         {
             var shoppingCarts = _context.ShoppingCarts;
             var userShoppingCart = shoppingCarts.Where(s => s.UserId == userId);
