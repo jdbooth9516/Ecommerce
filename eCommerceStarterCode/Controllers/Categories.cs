@@ -38,7 +38,7 @@ namespace eCommerceStarterCode.Controllers
         }
         //<baseurl>/api/categories/category?id=1
         [HttpGet("category")]
-        public IActionResult GetProductsByCategory(int id)
+        public IActionResult GetCategoryById(int id)
         {
             var category = _context.Categories;
             var filteredProducts = category.Where(p => p.CategoryId == id);

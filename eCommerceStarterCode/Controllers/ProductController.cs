@@ -52,5 +52,7 @@ namespace eCommerceStarterCode.Controllers
             var filteredProducts = products.Where(p => p.Name.Contains(searchText));
             return Ok(filteredProducts);
         }
+
+       
     }
 }
