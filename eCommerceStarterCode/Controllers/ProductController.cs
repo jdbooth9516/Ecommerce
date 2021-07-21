@@ -23,7 +23,7 @@ namespace eCommerceStarterCode.Controllers
 
         //<baseurl>/api/products
         [HttpPost]
-        public IActionResult PostProduct([FromBody]Product value)
+        public IActionResult PostProduct([FromBody] Product value)
         {
             _context.Products.Add(value);
             _context.SaveChanges();
@@ -37,8 +37,8 @@ namespace eCommerceStarterCode.Controllers
             return Ok(products);
         }
 
-        [HttpPost("category")]
-        public IActionResult GetProductsByCategory([FromBody]int categoryId)
+        [HttpGet("category/{categoryId:int}")]
+        public IActionResult GetProductsByCategory(int categoryId)
         {
             var products = _context.Products;
             var filteredProducts = products.Where(p => p.CategoryId == categoryId);
